@@ -34,7 +34,7 @@ const placeBothShips = () => {
         return secondShipLocation;
     }
     placeSecondShip();
-    console.log('both locations: ' + twoShipsLocations);
+    console.log('both locations: ' + twoShipsLocations); // Leave here for now to check things are working properly
     if (secondShipLocation === firstShipLocation) {
         twoShipsLocations = [];
         placeBothShips();
