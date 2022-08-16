@@ -5,24 +5,40 @@ var rs = require('readline-sync');
 let firstShipLocation = ''; // If the user's input strike (define later & put into startGame function upon pressing any key) = var location, print 'Hit!' If not, miss. If they guess same location 2x, 'Miss!
 let secondShipLocation = ''; // If the user's input strike (define later & put into startGame function upon pressing any key) = var location, print 'Hit!' If not, miss. If they guess same location 2x, 'Miss!
 
-const placeFirstShip = () => {
-    let letterCoordinates = 'ABC';
-    let numberCoordinates = '123';
-    for (let i = 0; i < 1; i++) {
-        firstShipLocation += letterCoordinates[Math.floor(Math.random() * 3)] + numberCoordinates[Math.floor(Math.random() * 3)];
-    }
-    console.log(firstShipLocation); // Remove when game-ready
-    return firstShipLocation;
-}
+// Initialize array to track placement of the two ships. If they are the same, run function to get random locations again
+let twoShipsLocations = [];
 
-const placeSecondShip = () => {
-    let letterCoordinates = 'ABC';
-    let numberCoordinates = '123';
-    for (let i = 0; i < 1; i++) {
-        secondShipLocation += letterCoordinates[Math.floor(Math.random() * 3)] + numberCoordinates[Math.floor(Math.random() * 3)];
+// Function to place both ships simultaneously. Make it impossible for second ship to be identical location:
+const placeBothShips = () => {
+    let firstShipLocation = '';
+    let secondShipLocation = '';
+    const placeFirstShip = () => {
+        let letterCoordinates = 'ABC';
+        let numberCoordinates = '123';
+        for (let i = 0; i < 1; i++) {
+            firstShipLocation += letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 2)];
+        }
+        console.log(firstShipLocation); // Remove when game-ready
+        twoShipsLocations.push(firstShipLocation);
+        return firstShipLocation;
     }
-    console.log(secondShipLocation); // Remove when game-ready
-    return secondShipLocation;
+    placeFirstShip();
+    const placeSecondShip = () => {
+        let letterCoordinates = 'ABC';
+        let numberCoordinates = '123';
+        for (let i = 0; i < 1; i++) {
+            secondShipLocation += letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 1)];
+        }
+        console.log(secondShipLocation); // Remove when game-ready
+        twoShipsLocations.push(secondShipLocation);
+        return secondShipLocation;
+    }
+    placeSecondShip();
+    console.log('both locations: ' + twoShipsLocations);
+    if (secondShipLocation === firstShipLocation) {
+        twoShipsLocations = [];
+        placeBothShips();
+    }
 }
 
 // Define variable corresponding to user input on where to strike:
@@ -48,18 +64,8 @@ const getStrike = () => {
 const playGame = () => {
     if (rs.keyIn('Press any key to start the game: ')) {
         console.log('Let\'s play!');
-        placeFirstShip();
-        placeSecondShip();
-        // In case locations of the two ships are the same, keep resetting the vars & running again until different, then ask for strike:
-        if (firstShipLocation === secondShipLocation) {
-            firstShipLocation = '';
-            placeFirstShip();
-            secondShipLocation = '';
-            placeSecondShip();
-            getStrike();
-        } else { // When ships have initially been placed in unique positions, ask user for strike
-            getStrike();
-        }
+        placeBothShips();
+        getStrike();
     }
 }
 playGame();
