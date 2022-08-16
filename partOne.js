@@ -31,8 +31,18 @@ const placeSecondShip = () => {
 let letters = ['A', 'B', 'C'];
 let numbers = ['1', '2', '3'];
 
-// Initialize var to tally sunken ships:
+// Initialize var to tally  sunken ships:
 let sunkenShips = 0;
+
+// Initialize array to track user guesses. If a guess is entered more than once, it's a miss:
+let userInputs = [];
+
+// Function to ask user for strike location:
+let strike = '';
+const getStrike = () => {
+    strike = rs.question('Enter a location to strike (e.g. A3): ').toUpperCase();
+    console.log(strike);
+}
 
 // Have user press any key to begin game:
 const playGame = () => {
@@ -40,17 +50,16 @@ const playGame = () => {
         console.log('Let\'s play!');
         placeFirstShip();
         placeSecondShip();
-        // In case locations of the two ships are the same, keep resetting the vars & running again until different:
+        // In case locations of the two ships are the same, keep resetting the vars & running again until different, then ask for strike:
         if (firstShipLocation === secondShipLocation) {
             firstShipLocation = '';
             placeFirstShip();
             secondShipLocation = '';
             placeSecondShip();
+            getStrike();
+        } else { // When ships have initially been placed in unique positions, ask user for strike
+            getStrike();
         }
-        // Make user input case-insensitive:
-        let strike = rs.question('Enter a location to strike (e.g. "A3"): ').toUpperCase();
-        console.log(strike);
-        // Check that user inputs letter A-C & number 1-3:
     }
 }
 playGame();
