@@ -16,7 +16,7 @@ const placeBothShips = () => {
         let letterCoordinates = 'ABC';
         let numberCoordinates = '123';
         for (let i = 0; i < 1; i++) {
-            firstShipLocation += letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 2)];
+            firstShipLocation += letterCoordinates[Math.floor(Math.random() * 3)] + numberCoordinates[Math.floor(Math.random() * 3)];
         }
         console.log(firstShipLocation); // Remove when game-ready
         twoShipsLocations.push(firstShipLocation);
@@ -27,7 +27,7 @@ const placeBothShips = () => {
         let letterCoordinates = 'ABC';
         let numberCoordinates = '123';
         for (let i = 0; i < 1; i++) {
-            secondShipLocation += letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 1)];
+            secondShipLocation += letterCoordinates[Math.floor(Math.random() * 3)] + numberCoordinates[Math.floor(Math.random() * 3)];
         }
         console.log(secondShipLocation); // Remove when game-ready
         twoShipsLocations.push(secondShipLocation);
