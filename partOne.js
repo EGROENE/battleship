@@ -25,6 +25,10 @@ const placeSecondShip = () => {
     return secondShipLocation;
 }
 
+// Define variable corresponding to user input on where to strike:
+// Add a check to playGame() to ensure strike[0] is A-C & strike[1] is 1-3. If not, ask for input again.
+let strike = '';
+
 // Have user press any key to begin game:
 const playGame = () => {
     if (rs.keyIn('Press any key to start the game. ')) {
