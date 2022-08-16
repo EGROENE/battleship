@@ -58,6 +58,10 @@ let strike = '';
 const getStrike = () => {
     strike = rs.question('Enter a location to strike (e.g. A3): ').toUpperCase();
     console.log(strike);
+    if (!letters.includes(strike[0]) || !numbers.includes(strike[1])) {
+        console.log('Please enter a letter A-C & a number 1-3.')
+        getStrike();
+    }
 }
 
 // Have user press any key to begin game:
