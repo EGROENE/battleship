@@ -47,9 +47,6 @@ const placeBothShips = () => {
 let letters = ['A', 'B', 'C'];
 let numbers = ['1', '2', '3'];
 
-// Initialize var to tally  sunken ships:
-let sunkenShips = 0;
-
 // Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss:
 let userInputs = [];
 
@@ -66,12 +63,41 @@ const getStrike = () => {
     }
 }
 
+// Function to tell user if they hit or miss:
+// Initialize var to tally  sunken ships:
+let sunkenShips = 0;
+const hitOrMiss = () => {
+    let remainingShips = twoShipsLocations.length - sunkenShips;
+    if (twoShipsLocations.includes(strike)) {
+        sunkenShips += 1;
+        console.log('Total ships: ' + twoShipsLocations.length);
+        console.log('Sunken ships: ' + sunkenShips);
+        console.log('Remaining ships: ' + (twoShipsLocations.length - sunkenShips));
+        console.log(`Hit! ${twoShipsLocations.length - sunkenShips} ship(s) remaining.`);
+        if (remainingShips > 0) {
+            getStrike();
+            hitOrMiss();
+        }
+    } else if (!twoShipsLocations.includes(strike)) {
+        console.log('You have missed.');
+        getStrike();
+        hitOrMiss();
+    } else if (userInputs.includes(strike)) {
+        console.log('You\ve already picked this location. Miss!');
+        getStrike();
+        hitOrMiss();
+    }
+}
+
+// Function to end or continue game when there are zero ships left:
+
 // Have user press any key to begin game:
 const playGame = () => {
     if (rs.keyIn('Press any key to start the game: ')) {
         console.log('Let\'s play!');
         placeBothShips();
         getStrike();
+        hitOrMiss();
     }
 }
 playGame();
