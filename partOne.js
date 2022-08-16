@@ -26,22 +26,31 @@ const placeSecondShip = () => {
 }
 
 // Define variable corresponding to user input on where to strike:
-// Add a check to playGame() to ensure strike[0] is A-C & strike[1] is 1-3. If not, ask for input again.
-let strike = '';
+// Add a check to playGame() to ensure strike[0] is A-C & strike[1] is 1-3. If not, ask for input again. Make it case-insensitive.
+// First, add arrays of vaiid characters to be iterated through during check:
+let letters = ['A', 'B', 'C'];
+let numbers = ['1', '2', '3'];
+
+// Initialize var to tally sunken ships:
+let sunkenShips = 0;
 
 // Have user press any key to begin game:
 const playGame = () => {
-    if (rs.keyIn('Press any key to start the game. ')) {
+    if (rs.keyIn('Press any key to start the game: ')) {
         console.log('Let\'s play!');
         placeFirstShip();
         placeSecondShip();
-    }
-    // In case locations of the two ships are the same, keep resetting the vars & running again until different:
-    if (firstShipLocation === secondShipLocation) {
-        firstShipLocation = '';
-        placeFirstShip();
-        secondShipLocation = '';
-        placeSecondShip();
+        // In case locations of the two ships are the same, keep resetting the vars & running again until different:
+        if (firstShipLocation === secondShipLocation) {
+            firstShipLocation = '';
+            placeFirstShip();
+            secondShipLocation = '';
+            placeSecondShip();
+        }
+        // Make user input case-insensitive:
+        let strike = rs.question('Enter a location to strike (e.g. "A3"): ').toUpperCase();
+        console.log(strike);
+        // Check that user inputs letter A-C & number 1-3:
     }
 }
 playGame();
