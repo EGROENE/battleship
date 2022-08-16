@@ -26,11 +26,18 @@ const placeSecondShip = () => {
 }
 
 // Have user press any key to begin game:
-const startGame = () => {
+const playGame = () => {
     if (rs.keyIn('Press any key to start the game. ')) {
         console.log('Let\'s play!');
         placeFirstShip();
         placeSecondShip();
-      }
+    }
+    // In case locations of the two ships are the same, keep resetting the vars & running again until different:
+    if (firstShipLocation === secondShipLocation) {
+        firstShipLocation = '';
+        placeFirstShip();
+        secondShipLocation = '';
+        placeSecondShip();
+    }
 }
-startGame();
+playGame();
