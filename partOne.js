@@ -54,7 +54,7 @@ const getStrike = () => {
 
 // Function to ask user if they want to play again after sinking all ships:
 const playAgainOrNot = () => {
-    if (rs.keyInYN('Would you like to play again? ')) {
+    if (rs.keyInYN('You have destroyed all the battleships! Would you like to play again? ')) {
         twoShipsLocations = [];
         sunkenShips = 0;
         userInputs = [];
