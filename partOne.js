@@ -34,7 +34,7 @@ const placeBothShips = () => {
     }
 }
 
-// Add arrays of vaiid characters to be iterated through during check:
+// Add arrays of valid characters to be iterated through during check:
 let letters = ['A', 'B', 'C'];
 let numbers = ['1', '2', '3'];
 
