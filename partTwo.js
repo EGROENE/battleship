@@ -2,7 +2,18 @@
 var rs = require('readline-sync');
 
 // Initialize array to track placement of the two ships. If they are the same, run function to get random locations again
-let twoShipsLocations = [];
+let shipLocations = [];
+
+// Function to place 1 two-unit ship:
+
+
+// Function to place 2 three-unit ships:
+
+
+// Function to place 1 four-unit ship:
+
+
+// Function to place 1 five-unit ship:
 
 // Function to place both ships simultaneously. Make it impossible for second ship to be identical location:
 const placeBothShips = () => {
@@ -14,7 +25,7 @@ const placeBothShips = () => {
         for (let i = 0; i < 1; i++) {
             firstShipLocation += letterCoordinates[Math.floor(Math.random() * 3)] + numberCoordinates[Math.floor(Math.random() * 3)];
         }
-        twoShipsLocations.push(firstShipLocation);
+        shipLocations.push(firstShipLocation);
         return firstShipLocation;
     }
     placeFirstShip();
@@ -24,7 +35,7 @@ const placeBothShips = () => {
         for (let i = 0; i < 1; i++) {
             secondShipLocation += letterCoordinates[Math.floor(Math.random() * 3)] + numberCoordinates[Math.floor(Math.random() * 3)];
         }
-        twoShipsLocations.push(secondShipLocation);
+        shipLocation.push(secondShipLocation);
         return secondShipLocation;
     }
     placeSecondShip();
