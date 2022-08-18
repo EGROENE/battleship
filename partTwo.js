@@ -9,10 +9,10 @@ let shipLocations = [];
 // Function to place all ships:
 const placeAllShips = () => {
     // Function to place 1 two-unit ship (call this once in placeAllShips(), since only one of this type is in game):
-    let twoUnitShip = [];
-    let unitOne = [];
-    let unitTwo = [];
     const placeTwoUnitShip = () => {
+        let twoUnitShip = [];
+        let unitOne = [];
+        let unitTwo = [];
         let letterCoordinates = 'ABCDEFGHIJ';
         let numberCoordinates = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
