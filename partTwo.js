@@ -52,19 +52,19 @@ const placeThreeUnitShip = () => {
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
-        unitOne += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 2)]];
+        unitOne += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 10)]];
         console.log(unitOne);
         threeUnitShip.push(unitOne);
     }
     // Create unit two:
     for (let i = 0; i < 1; i++) {
-        unitTwo += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 3)]];
+        unitTwo += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 10)]];
         console.log(unitTwo);
         threeUnitShip.push(unitTwo);
     }
     // Create unit three:
     for (let i = 0; i < 1; i++) {
-        unitThree += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 2)]];
+        unitThree += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 10)]];
         console.log(unitThree);
         threeUnitShip.push(unitThree);
     }
@@ -84,21 +84,19 @@ const placeThreeUnitShip = () => {
         console.log(shipLocations); // Keep now for testing purposes
         return threeUnitShip;
     }
+
+    // Logic preventing units from being placed in same spots as two-unit ships:
 }
 
-// Function to place 1 four-unit ship:
+// Function to place 1 four-unit ship (call once inside placeAllShips()):
 
 
-// Function to place 1 five-unit ship:
-
-
-// Logic to prevent placing ships in same locations as others:
-
+// Function to place 1 five-unit ship (call once inside placeAllShips()):
 
 // Function to place all ships:
 const placeAllShips = () => {
-    //placeTwoUnitShip();
+    placeTwoUnitShip();
     placeThreeUnitShip();
-
+    placeThreeUnitShip();
 }
 placeAllShips();
