@@ -67,13 +67,13 @@ let sunkenShips = 0;
 
 // Function to tell user if they hit or miss:
 const hitOrMiss = () => {
-    let countStrikeOccurences = 0;
+    let countStrikeOccurrences = 0;
     for (userInput of userInputs) {
         if(userInput === strike) {
             countStrikeOccurences++;
         }
     }
-    if (countStrikeOccurences > 1) {
+    if (countStrikeOccurrences > 1) {
         console.log('You\'ve already picked this location. Miss!');
         getStrike();
         hitOrMiss();
