@@ -4,13 +4,15 @@ var rs = require('readline-sync');
 // Initialize array to track placement of the ships.
 let shipLocations = [];
 
+// Define potential letter & number coordinates:
+let letterCoordinates = 'ABCDEFGHIJ';
+let numberCoordinates = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
 // Function to place 1 two-unit ship (call this once in placeAllShips(), since only one of this type is in game):
 const placeTwoUnitShip = () => {
     let twoUnitShip = [];
     let unitOne = [];
     let unitTwo = [];
-    let letterCoordinates = 'ABCDEFGHIJ';
-    let numberCoordinates = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
@@ -107,8 +109,6 @@ const placeThreeUnitShip = () => {
     let unitOne = [];
     let unitTwo = [];
     let unitThree = [];
-    let letterCoordinates = 'ABCDEFGHIJ';
-    let numberCoordinates = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
