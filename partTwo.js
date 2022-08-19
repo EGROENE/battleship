@@ -82,13 +82,17 @@ const placeTwoUnitShip = () => {
             let indexOfLetter = letterCoordinates.indexOf(unitOne[0]);
             unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + (unitOne[1] + unitOne[2]);   
         }
-        if (unitOne[0] === 'J') {
+        if (unitOne[0] === 'J' && unitOne.length === 3) {
             let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
-            unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];        
+            unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + (unitOne[1] + unitOne[2]);        
+        } else if (unitOne[0] === 'J') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];  
         }
         console.log(unitTwo); // Keep now for testing purposes
         twoUnitShip.push(unitTwo);
     }
+
     // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
     let randNum = (Math.floor(Math.random() * 2));
     if (randNum === 0) {
