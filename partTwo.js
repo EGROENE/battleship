@@ -87,21 +87,6 @@ const placeTwoUnitShip = () => {
         console.log(unitTwo);
         twoUnitShip.push(unitTwo);
     }
-
-    // Logic preventing units from being placed in the same spot:
-/*     if (unitOne === unitTwo) {
-        console.log('duplicate'); // Keep now for testing purposes
-        unitOne = [];
-        unitTwo = [];
-        twoUnitShip = [];
-        console.log(twoUnitShip); // Keep now for testing purposes
-        placeTwoUnitShip();
-    } else {
-        shipLocations.push(twoUnitShip);
-        console.log(twoUnitShip); // Keep now for testing purposes
-        console.log(shipLocations); // Keep now for testing purposes
-        return twoUnitShip;
-    } */
     shipLocations.push(twoUnitShip);
     console.log(twoUnitShip); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
