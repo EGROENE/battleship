@@ -92,7 +92,7 @@ const placeTwoUnitShip = () => {
         console.log(unitTwo); // Keep now for testing purposes
         twoUnitShip.push(unitTwo);
     }
-
+    
     // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
     let randNum = (Math.floor(Math.random() * 2));
     if (randNum === 0) {
