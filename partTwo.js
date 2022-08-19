@@ -89,7 +89,6 @@ const placeTwoUnitShip = () => {
     }
     // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
     let randNum = (Math.floor(Math.random() * 2));
-    console.log(randNum);
     if (randNum === 0) {
         createMoreUnitsIfLetterCoordIsShared();
     } else {
