@@ -1,7 +1,7 @@
 // Add 'readline-sync' NPM package:
 var rs = require('readline-sync');
 
-// Initialize array to track placement of the two ships. If they are the same, run function to get random locations again
+// Initialize array to track placement of the ships.
 let shipLocations = [];
 
 // Function to place 1 two-unit ship (call this once in placeAllShips(), since only one of this type is in game):
@@ -18,7 +18,7 @@ const placeTwoUnitShip = () => {
         console.log(unitOne);
         twoUnitShip.push(unitOne);
     }
-    // Create unit two:
+    // Function to create additional units and place next to each other horizontally (if the units share the same letter coordinate):
     let createMoreUnitsIfLetterCoordIsShared = () => {
         if (unitOne[0] === 'A') {
             unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
@@ -47,10 +47,45 @@ const placeTwoUnitShip = () => {
         twoUnitShip.push(unitTwo);
     }
 
+    // Function to create additional units and place next to each other vertically (if the units share the same number coordinate):
     let createMoreUnitsIfNumberCoordIsShared = () => {
-        if (unitOne[1] === '1') {
-            unitTwo = (unitOne[0] )
+        if (unitOne[1] === '1' && unitOne.length === 2) {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0]);
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
+        } else if (unitOne[1] === '2') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if (unitOne[1] === '3') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if (unitOne[1] === '4') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if (unitOne[1] === '5') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if (unitOne[1] === '6') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if (unitOne[1] === '7') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if (unitOne[1] === '8') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if (unitOne[1] === '9') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
+        } else if ((unitOne[1] + unitOne[2]) == '10') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0]);
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + (unitOne[1] + unitOne[2]);   
         }
+        if (unitOne[0] === 'J') {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0])
+            unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];        
+        }
+        console.log(unitTwo);
+        twoUnitShip.push(unitTwo);
     }
 
     // Logic preventing units from being placed in the same spot:
