@@ -19,14 +19,42 @@ const placeTwoUnitShip = () => {
         twoUnitShip.push(unitOne);
     }
     // Create unit two:
-    for (let i = 0; i < 1; i++) {
-        unitTwo += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
-        console.log(unitTwo);
+    let createMoreUnitsIfLetterCoordIsShared = () => {
+        if (unitOne[0] === 'A') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'B') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'C') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'D') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'E') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'F') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'G') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'H') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'I') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        } else if (unitOne[0] === 'J') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+        }
+        if ((unitOne[1] + unitOne[2]) == '10') {
+            unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
+        }
         twoUnitShip.push(unitTwo);
     }
 
+    let createMoreUnitsIfNumberCoordIsShared = () => {
+        if (unitOne[1] === '1') {
+            unitTwo = (unitOne[0] )
+        }
+    }
+
     // Logic preventing units from being placed in the same spot:
-    if (unitOne === unitTwo) {
+/*     if (unitOne === unitTwo) {
         console.log('duplicate'); // Keep now for testing purposes
         unitOne = [];
         unitTwo = [];
@@ -38,7 +66,11 @@ const placeTwoUnitShip = () => {
         console.log(twoUnitShip); // Keep now for testing purposes
         console.log(shipLocations); // Keep now for testing purposes
         return twoUnitShip;
-    }
+    } */
+    shipLocations.push(twoUnitShip);
+    console.log(twoUnitShip); // Keep now for testing purposes
+    console.log(shipLocations); // Keep now for testing purposes
+    return twoUnitShip;
 }
 
 // Function to place 1 three-unit ship (call this function twice in placeAllShips(), as there are 2 of this type in game):
@@ -96,7 +128,5 @@ const placeThreeUnitShip = () => {
 // Function to place all ships:
 const placeAllShips = () => {
     placeTwoUnitShip();
-    placeThreeUnitShip();
-    placeThreeUnitShip();
 }
 placeAllShips();
