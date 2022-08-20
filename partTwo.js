@@ -240,7 +240,8 @@ const placeThreeUnitShip = () => {
     console.log(shipLocationsAll[shipLocationsAll.length - 1]);
 
     // Cut off most-recent units added to shipLocationsAll so you can check if most-recent units already exist from previous ships:
-    // Cut 3 off for 3-unit ship, etc:
+    // Cut 3 off for 3-unit ship, etc. Maybe define globally as a function for each ship type or pass in number corresponding to ship type to the parameter
+    
 
 
     return threeUnitShip;
