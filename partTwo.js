@@ -83,12 +83,15 @@ const placeTwoUnitShip = () => {
     }
     
     // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
-    let randNum = (Math.floor(Math.random() * 2));
-    if (randNum === 0) {
-        createMoreUnitsIfLetterCoordIsShared();
-    } else {
-        createMoreUnitsIfNumberCoordIsShared();
-    }
+    const randPlaceVertOrHoriz = () => {
+        let randNum = (Math.floor(Math.random() * 2));
+        if (randNum === 0) {
+            createMoreUnitsIfLetterCoordIsShared();
+        } else {
+            createMoreUnitsIfNumberCoordIsShared();
+        }
+    };
+    randPlaceVertOrHoriz();
 
     shipLocations.push(twoUnitShip);
     console.log(twoUnitShip); // Keep now for testing purposes
@@ -202,12 +205,15 @@ const placeThreeUnitShip = () => {
     }
 
         // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
-        let randNum = (Math.floor(Math.random() * 2));
-        if (randNum === 0) {
-            createMoreUnitsIfLetterCoordIsShared();
-        } else {
-            createMoreUnitsIfNumberCoordIsShared();
-        }
+        const randPlaceVertOrHoriz = () => {
+            let randNum = (Math.floor(Math.random() * 2));
+            if (randNum === 0) {
+                createMoreUnitsIfLetterCoordIsShared();
+            } else {
+                createMoreUnitsIfNumberCoordIsShared();
+            }
+        };
+        randPlaceVertOrHoriz();
 
         shipLocations.push(threeUnitShip);
         console.log(threeUnitShip); // Keep now for testing purposes
