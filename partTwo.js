@@ -240,8 +240,10 @@ const placeThreeUnitShip = () => {
     console.log('shipLocationsAll');
     console.log(shipLocationsAll);
     console.log(shipLocationsAll[0]); // This is the subarray of shipLocationsAll. Loop thru this while checking if spots are already occupied
-    // Logic to check if shipLocationsAll already contains values of ship being placed. If so, keep making new values. If not, proceed normally:
     
+    // Logic to check if shipLocationsAll already contains values of ship being placed. If so, keep making new values. If not, proceed normally:
+    // Make sure to empty shipLocations array of last item added to it using pop() if shipLocationsAll contains one of the new units.
+
     return threeUnitShip;
 }
 
