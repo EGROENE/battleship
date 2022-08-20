@@ -49,6 +49,7 @@ const placeTwoUnitShip = () => {
             unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
         }
         twoUnitShip.push(unitTwo);
+        shipLocationsAll.push(unitOne, unitTwo);
     }
 
     // Function to create additional units and place next to each other vertically (if the units share the same number coordinate):
@@ -82,6 +83,7 @@ const placeTwoUnitShip = () => {
         }
         console.log(unitTwo); // Keep now for testing purposes
         twoUnitShip.push(unitTwo);
+        shipLocationsAll.push(unitOne, unitTwo);
     }
     
     // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
@@ -110,8 +112,9 @@ const placeThreeUnitShip = () => {
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
-        unitOne += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 5)]];
+        unitOne += [letterCoordinates[Math.floor(Math.random() * 2)] + numberCoordinates[Math.floor(Math.random() * 5)]];
         threeUnitShip.push(unitOne);
+        shipLocationsAll.push(unitOne);
     }
     // Function to create additional units and place next to each other horizontally (if the units share the same letter coordinate):
     let createMoreUnitsIfLetterCoordIsShared = () => {
@@ -155,6 +158,7 @@ const placeThreeUnitShip = () => {
         console.log('threeUnitShip'); // Keep now for testing purposes
         console.log(threeUnitShip); // Keep now for testing purposes
         shipLocations.push(threeUnitShip);
+        shipLocationsAll.push(unitTwo, unitThree);
     }
 
     // Function to create additional units and place next to each other vertically (if the units share the same number coordinate):
@@ -207,6 +211,7 @@ const placeThreeUnitShip = () => {
         console.log('threeUnitShip'); // Keep now for testing purposes
         console.log(threeUnitShip); // Keep now for testing purposes
         shipLocations.push(threeUnitShip);
+        shipLocationsAll.push(unitTwo, unitThree);
     }
 
     // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
@@ -220,6 +225,8 @@ const placeThreeUnitShip = () => {
     };
     randPlaceVertOrHoriz();
 
+    // Logic to check if shipLocationsAll already contains values of ship being placed. If so, keep making new values. If not, proceed normally:
+    // Make sure to empty shipLocations array of last item added to it using pop() if shipLocationsAll contains one of the new units.
 
 /*     console.log('threeUnitShip'); // Keep now for testing purposes
     console.log(threeUnitShip); // Keep now for testing purposes
@@ -227,22 +234,14 @@ const placeThreeUnitShip = () => {
     console.log('shipLocations'); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
 
-    // Logic preventing units from being placed in same spots as previous ships:
-    for (let i = 0; i < shipLocations.length; i++) {
-        if (shipLocations.length > 1 && shipLocations[i] != shipLocations[shipLocations.length - 1]) {
-            shipLocationsAll = [];
-            shipLocationsAll.push(shipLocations[i].concat(shipLocations[i + 1]));
-        } else if (shipLocations.length === 1){
-            shipLocationsAll.push(shipLocations[i]);
-        }
-    }
-    // LEAVE FOLLOWING 3 CONSOLE.LOGS FOR TESTING PURPOSES
+    // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
     console.log('shipLocationsAll');
     console.log(shipLocationsAll);
-    console.log(shipLocationsAll[0]); // This is the subarray of shipLocationsAll. Loop thru this while checking if spots are already occupied
-    
-    // Logic to check if shipLocationsAll already contains values of ship being placed. If so, keep making new values. If not, proceed normally:
-    // Make sure to empty shipLocations array of last item added to it using pop() if shipLocationsAll contains one of the new units.
+    console.log(shipLocationsAll[shipLocationsAll.length - 1]);
+
+    // Cut off most-recent units added to shipLocationsAll so you can check if most-recent units already exist from previous ships:
+    // Cut 3 off for 3-unit ship, etc:
+
 
     return threeUnitShip;
 }
