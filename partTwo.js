@@ -1,8 +1,10 @@
 // Add 'readline-sync' NPM package:
 var rs = require('readline-sync');
 
-// Initialize array to track placement of the ships.
+// Initialize array to track placement of the ships. Contains subarrays.
 let shipLocations = [];
+// Initialize array to track placement of the ships. Does not contain subarrays. 
+let shipLocationsAll = [];
 
 // Define potential letter & number coordinates:
 let letterCoordinates = 'ABCDEFGHIJ';
@@ -16,7 +18,7 @@ const placeTwoUnitShip = () => {
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
-        unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
+        unitOne += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 5)]];
         console.log(unitOne);
         twoUnitShip.push(unitOne);
     }
@@ -108,8 +110,7 @@ const placeThreeUnitShip = () => {
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
-        unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
-        console.log(unitOne);
+        unitOne += [letterCoordinates[Math.floor(Math.random() * 1)] + numberCoordinates[Math.floor(Math.random() * 5)]];
         threeUnitShip.push(unitOne);
     }
     // Function to create additional units and place next to each other horizontally (if the units share the same letter coordinate):
@@ -151,6 +152,9 @@ const placeThreeUnitShip = () => {
         }
         threeUnitShip.push(unitTwo);
         threeUnitShip.push(unitThree);
+        console.log('threeUnitShip'); // Keep now for testing purposes
+        console.log(threeUnitShip); // Keep now for testing purposes
+        shipLocations.push(threeUnitShip);
     }
 
     // Function to create additional units and place next to each other vertically (if the units share the same number coordinate):
@@ -198,29 +202,48 @@ const placeThreeUnitShip = () => {
             unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];  
             unitThree = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1];  
         }
-        console.log(unitTwo); // Keep now for testing purposes
         threeUnitShip.push(unitTwo);
-        console.log(unitThree); // Keep now for testing purposes
         threeUnitShip.push(unitThree);
+        console.log('threeUnitShip'); // Keep now for testing purposes
+        console.log(threeUnitShip); // Keep now for testing purposes
+        shipLocations.push(threeUnitShip);
     }
 
-        // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
-        const randPlaceVertOrHoriz = () => {
-            let randNum = (Math.floor(Math.random() * 2));
-            if (randNum === 0) {
-                createMoreUnitsIfLetterCoordIsShared();
-            } else {
-                createMoreUnitsIfNumberCoordIsShared();
-            }
-        };
-        randPlaceVertOrHoriz();
+    // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
+    const randPlaceVertOrHoriz = () => {
+        let randNum = (Math.floor(Math.random() * 2));
+        if (randNum === 0) {
+            createMoreUnitsIfLetterCoordIsShared();
+        } else {
+            createMoreUnitsIfNumberCoordIsShared();
+        }
+    };
+    randPlaceVertOrHoriz();
 
-        shipLocations.push(threeUnitShip);
-        console.log(threeUnitShip); // Keep now for testing purposes
-        console.log(shipLocations); // Keep now for testing purposes
-        return threeUnitShip;
 
-    // Logic preventing units from being placed in same spots as two-unit ships:
+/*     console.log('threeUnitShip'); // Keep now for testing purposes
+    console.log(threeUnitShip); // Keep now for testing purposes
+    shipLocations.push(threeUnitShip); */
+    console.log('shipLocations'); // Keep now for testing purposes
+    console.log(shipLocations); // Keep now for testing purposes
+
+    // Logic preventing units from being placed in same spots as previous ships:
+    for (let i = 0; i < shipLocations.length; i++) {
+        if (shipLocations.length > 1 && shipLocations[i] != shipLocations[shipLocations.length - 1]) {
+            shipLocationsAll = [];
+            shipLocationsAll.push(shipLocations[i].concat(shipLocations[i + 1]));
+        } else if (shipLocations.length === 1){
+            shipLocationsAll.push(shipLocations[i]);
+        }
+    }
+    // LEAVE FOLLOWING 3 CONSOLE.LOGS FOR TESTING PURPOSES
+    console.log('shipLocationsAll');
+    console.log(shipLocationsAll);
+    console.log(shipLocationsAll[0]); // This is the subarray of shipLocationsAll. Loop thru this while checking if spots are already occupied
+
+
+
+    return threeUnitShip;
 }
 
 // Function to place 1 four-unit ship (call once inside placeAllShips()):
@@ -230,7 +253,7 @@ const placeThreeUnitShip = () => {
 
 // Function to place all ships:
 const placeAllShips = () => {
-    placeTwoUnitShip();
+    //placeTwoUnitShip();
     placeThreeUnitShip();
     placeThreeUnitShip();
 }
