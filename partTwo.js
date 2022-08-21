@@ -10,11 +10,15 @@ let shipLocationsAll = [];
 let letterCoordinates = 'ABCDEFGHIJ';
 let numberCoordinates = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
+let unitOne = [];
+let unitTwo = [];
+let unitThree = [];
+
 // Function to place 1 two-unit ship (call this once in placeAllShips(), since only one of this type is in game):
 const placeTwoUnitShip = () => {
     let twoUnitShip = [];
-    let unitOne = [];
-    let unitTwo = [];
+    unitOne = [];
+    unitTwo = [];
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
@@ -103,12 +107,23 @@ const placeTwoUnitShip = () => {
     return twoUnitShip;
 }
 
+// Cut off most-recent units added to shipLocationsAll so you can check if most-recent units already exist from previous ships:
+// Call in all ship-placement functions except for placeTwoUnitShip()
+let unitOneIndex = '';
+let prevShipLocations = '';
+const getPreviousShipLocations = () => {
+    unitOneIndex = shipLocationsAll.indexOf(unitOne);
+    prevShipLocations = shipLocationsAll.slice(0, unitOneIndex); 
+    console.log(prevShipLocations);
+}
+
+
 // Function to place 1 three-unit ship (call this function twice in placeAllShips(), as there are 2 of this type in game):
 const placeThreeUnitShip = () => {
     let threeUnitShip = [];
-    let unitOne = [];
-    let unitTwo = [];
-    let unitThree = [];
+    unitOne = [];
+    unitTwo = [];
+    unitThree = [];
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
@@ -225,26 +240,23 @@ const placeThreeUnitShip = () => {
     };
     randPlaceVertOrHoriz();
 
-    // Logic to check if shipLocationsAll already contains values of ship being placed. If so, keep making new values. If not, proceed normally:
-    // Make sure to empty shipLocations array of last item added to it using pop() if shipLocationsAll contains one of the new units.
-
-/*     console.log('threeUnitShip'); // Keep now for testing purposes
-    console.log(threeUnitShip); // Keep now for testing purposes
-    shipLocations.push(threeUnitShip); */
     console.log('shipLocations'); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
 
     // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
     console.log('shipLocationsAll');
     console.log(shipLocationsAll);
-    console.log(shipLocationsAll[shipLocationsAll.length - 1]);
+    console.log(unitOne);
+    console.log(unitTwo);
+    console.log(unitThree);
 
-    // Cut off most-recent units added to shipLocationsAll so you can check if most-recent units already exist from previous ships:
-    // Cut 3 off for 3-unit ship, etc. Maybe define globally as a function for each ship type or pass in number corresponding to ship type to the parameter
-    
+    // Get previousShipLocations array:
+    getPreviousShipLocations();
+
+    // After the current ship's units are cut off, iterate thru previous ships' units to make sure the current ship's units don't match:
 
 
-    return threeUnitShip;
+    //return threeUnitShip;
 }
 
 // Function to place 1 four-unit ship (call once inside placeAllShips()):
