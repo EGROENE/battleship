@@ -259,7 +259,7 @@ const placeThreeUnitShip = () => {
     console.log(prevShipLocations); // FOR TESTING
 
     // After the current ship's units are cut off, iterate thru previous ships' units to make sure the current ship's units don't match:
-    if (prevShipLocations.includes(unitOne) || prevShipLocations.includes(unitTwo) || prevShipLocations.includes(unitThree)) {
+    while (prevShipLocations.includes(unitOne) || prevShipLocations.includes(unitTwo) || prevShipLocations.includes(unitThree)) {
         console.log('DUPLICATE CASE'); // FOR TESTING 
         
         // Cut most-recent ship off from shipLocations:
