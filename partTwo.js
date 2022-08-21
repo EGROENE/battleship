@@ -298,6 +298,6 @@ const placeThreeUnitShip = () => {
 const placeAllShips = () => {
     placeTwoUnitShip();
     placeThreeUnitShip();
-    //placeThreeUnitShip();
+    placeThreeUnitShip();
 }
 placeAllShips();
