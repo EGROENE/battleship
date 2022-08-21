@@ -109,12 +109,12 @@ const placeTwoUnitShip = () => {
 
 // Cut off most-recent units added to shipLocationsAll so you can check if most-recent units already exist from previous ships:
 // Call in all ship-placement functions except for placeTwoUnitShip()
-let unitOneIndex = '';
-let prevShipLocations = '';
-const getPreviousShipLocations = () => {
-    unitOneIndex = shipLocationsAll.indexOf(unitOne);
-    prevShipLocations = shipLocationsAll.slice(0, unitOneIndex); 
-    console.log(prevShipLocations);
+let prevShipLocations = [];
+const getPreviousShipLocations = (shipUnits) => {
+    //prevShipLocations = shipLocationsAll.slice(0, shipLocationsAll[shipLocationsAll.length - shipUnits]);
+    for (let i = 0; i < shipLocationsAll.length - shipUnits; i++) {
+        prevShipLocations.push(shipLocationsAll[i]);
+    }
 }
 
 
@@ -251,10 +251,14 @@ const placeThreeUnitShip = () => {
     console.log(unitThree);
 
     // Get previousShipLocations array:
-    getPreviousShipLocations();
+    getPreviousShipLocations(3);
+    console.log('prevShipLocations:');
+    console.log(prevShipLocations);
 
     // After the current ship's units are cut off, iterate thru previous ships' units to make sure the current ship's units don't match:
-
+    if (prevShipLocations.includes(unitOne) || prevShipLocations.includes(unitTwo) || prevShipLocations.includes(unitThree)) {
+        console.log('Hi');
+    }
 
     //return threeUnitShip;
 }
