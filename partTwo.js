@@ -296,12 +296,12 @@ const placeFourUnitShip = () => {
             if (unitOne[0] === 'H') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
-                unitThree = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
             }
             if (unitOne[0] === 'I') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
-                unitThree = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1]; 
             }
             if (unitOne[0] === 'J' && unitOne.length === 3) {
                 unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + (unitOne[1] + unitOne[2]);        
@@ -344,7 +344,7 @@ const placeFourUnitShip = () => {
     console.log(unitFour); // FOR TESTING
 
     // Get previousShipLocations array:
-    getPreviousShipLocations(3); // Param is equal to how many units the ship has
+    getPreviousShipLocations(4); // Param is equal to how many units the ship has
     console.log('prevShipLocations:'); // FOR TESTING
     console.log(prevShipLocations); // FOR TESTING
 
@@ -380,12 +380,171 @@ const placeFourUnitShip = () => {
 
 
 // Function to place 1 five-unit ship (call once inside placeAllShips()):
+const placeFiveUnitShip = () => {
+    let fiveUnitShip = [];
+    unitOne = [];
+    unitTwo = [];
+    unitThree = [];
+    unitFour = [];
+    unitFive = [];
+
+    const placeUnits = () => {
+         // Create unit one:
+        for (let i = 0; i < 1; i++) {
+            unitOne += [letterCoordinates[Math.floor(Math.random() * 4)] + numberCoordinates[Math.floor(Math.random() * 5)]];
+            fiveUnitShip.push(unitOne);
+            shipLocationsAll.push(unitOne);
+        }
+        // Function to create additional units and place next to each other horizontally (if the units share the same letter coordinate):
+        let createMoreUnitsIfLetterCoordIsShared = () => {
+            if (unitOne[0] === 'A'
+            || unitOne[0] === 'B'
+            || unitOne[0] === 'C'
+            || unitOne[0] === 'D'
+            || unitOne[0] === 'E'
+            || unitOne[0] === 'F'
+            || unitOne[0] === 'G'
+            || unitOne[0] === 'H'
+            || unitOne[0] === 'I'
+            || unitOne[0] === 'J') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));  
+                unitFour = (unitOne[0] + (Number(unitOne[1]) + 3));  
+                unitFive = (unitOne[0] + (Number(unitOne[1]) + 4));  
+            }
+            if ((unitOne[1] + unitOne[2]) == '10') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 2));
+                unitFour = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 3));
+                unitFour = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 4));
+            }
+            fiveUnitShip.push(unitTwo, unitThree, unitFour, unitFive);
+            console.log('fiveUnitShip'); // Keep now for testing purposes
+            console.log(fiveUnitShip); // Keep now for testing purposes
+            shipLocations.push(fiveUnitShip);
+            shipLocationsAll.push(unitTwo, unitThree, unitFour, unitFive);
+        }
+
+        // Function to create additional units and place next to each other vertically (if the units share the same number coordinate):
+        let createMoreUnitsIfNumberCoordIsShared = () => {
+            let indexOfLetter = letterCoordinates.indexOf(unitOne[0]);
+            if (unitOne[1] === '1' && unitOne.length === 2
+            || unitOne[1] === '2'
+            || unitOne[1] === '3'
+            || unitOne[1] === '4'
+            || unitOne[1] === '5'
+            || unitOne[1] === '6'
+            || unitOne[1] === '7'
+            || unitOne[1] === '8'
+            || unitOne[1] === '9'
+            || (unitOne[1] + unitOne[2]) == '10') {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter + 3) + unitOne[1]; 
+                unitFive = letterCoordinates.charAt(indexOfLetter + 4) + unitOne[1]; 
+            }
+            if (unitOne[0] === 'G') {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
+            }
+            if (unitOne[0] === 'H') {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
+                unitFive = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1]; 
+            }
+            if (unitOne[0] === 'I') {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
+                unitThree = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1]; 
+                unitFive = letterCoordinates.charAt(indexOfLetter - 3) + unitOne[1]; 
+            }
+            if (unitOne[0] === 'J' && unitOne.length === 3) {
+                unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + (unitOne[1] + unitOne[2]);        
+                unitThree = letterCoordinates.charAt(indexOfLetter - 2) + (unitOne[1] + unitOne[2]);        
+                unitFour = letterCoordinates.charAt(indexOfLetter - 3) + (unitOne[1] + unitOne[2]);        
+                unitFive = letterCoordinates.charAt(indexOfLetter - 4) + (unitOne[1] + unitOne[2]);     
+            } else if (unitOne[0] === 'J') {
+                unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];  
+                unitThree = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1];  
+                unitFour = letterCoordinates.charAt(indexOfLetter - 3) + unitOne[1];  
+                unitFive = letterCoordinates.charAt(indexOfLetter - 4) + unitOne[1];  
+            }
+            fiveUnitShip.push(unitTwo, unitThree, unitFour, unitFive);
+            console.log('fiveUnitShip'); // Keep now for testing purposes
+            console.log(fiveUnitShip); // Keep now for testing purposes
+            shipLocations.push(fiveUnitShip);
+            shipLocationsAll.push(unitTwo, unitThree, unitFour, unitFive);
+        }
+
+        // Randomly call createMoreUnitsIfNumberCoordIsShared() or createMoreUnitsIfLetterCoordIsShared():
+        const randPlaceVertOrHoriz = () => {
+            let randNum = (Math.floor(Math.random() * 2));
+            if (randNum === 0) {
+                createMoreUnitsIfLetterCoordIsShared();
+            } else {
+                createMoreUnitsIfNumberCoordIsShared();
+            }
+        };
+        randPlaceVertOrHoriz();
+    }
+    placeUnits();
+
+    console.log('shipLocations'); // Keep now for testing purposes
+    console.log(shipLocations); // Keep now for testing purposes
+
+    // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
+    console.log('shipLocationsAll'); // FOR TESTING
+    console.log(shipLocationsAll); // FOR TESTING
+    console.log(unitOne); // FOR TESTING
+    console.log(unitTwo); // FOR TESTING
+    console.log(unitThree); // FOR TESTING
+    console.log(unitFour); // FOR TESTING
+    console.log(unitFive); // FOR TESTING
+
+    // Get previousShipLocations array:
+    getPreviousShipLocations(5); // Param is equal to how many units the ship has
+    console.log('prevShipLocations:'); // FOR TESTING
+    console.log(prevShipLocations); // FOR TESTING
+
+    // After the current ship's units are cut off, iterate thru previous ships' units to make sure the current ship's units don't match:
+    while (prevShipLocations.includes(unitOne) || prevShipLocations.includes(unitTwo) || prevShipLocations.includes(unitThree) || prevShipLocations.includes(unitFour) || prevShipLocations.includes(unitFive)) {
+        console.log('DUPLICATE CASE'); // FOR TESTING 
+        
+        // Cut most-recent ship off from shipLocations:
+        shipLocations.pop();
+        console.log('shipLocations popped:'); // FOR TESTING
+        console.log(shipLocations); // FOR TESTING
+        
+        // Eliminate duplicate locations from shipLocationsAll:
+        shipLocationsAll = shipLocations[0].concat(shipLocations[1], shipLocations[2], shipLocations[3]); // Add more here the bigger the ship gets (also concat shipLocations[2] in case of placeFourUnitShip, etc)
+        console.log('shipLocationsAll trimmed:');
+        console.log(shipLocationsAll); // FOR TESTING
+        
+        // Empty current ship & units:
+        fiveUnitShip = [];
+        unitOne = [];
+        unitTwo = [];
+        unitThree = [];
+        unitFour = [];
+        unitFive = [];
+        
+        // Re-place current ship:
+        placeUnits();
+        console.log('Final shipLocations after duplicate case:'); // FOR TESTING
+        console.log(shipLocations); // FOR TESTING
+        console.log('Final shipLocationsAll after duplicate case:'); // FOR TESTING
+        console.log(shipLocationsAll); // FOR TESTING
+    }
+}
 
 // Function to place all ships:
 const placeAllShips = () => {
-    placeTwoUnitShip();
+    //placeTwoUnitShip();
     placeThreeUnitShip();
     placeThreeUnitShip();
     placeFourUnitShip();
+    placeFiveUnitShip();
 }
 placeAllShips();
