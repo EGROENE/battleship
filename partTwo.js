@@ -575,3 +575,6 @@ const playAgainOrNot = () => {
         playGame();
     }
 }
+
+// Initialize var to tally  sunken ships:
+let sunkenShips = 0;
