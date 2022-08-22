@@ -13,6 +13,8 @@ let numberCoordinates = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 let unitOne = [];
 let unitTwo = [];
 let unitThree = [];
+let unitFour = [];
+let unitFive = [];
 
 // Function to place 1 two-unit ship (call this once in placeAllShips(), since only one of this type is in game):
 const placeTwoUnitShip = () => {
@@ -549,10 +551,6 @@ const placeAllShips = () => {
 }
 placeAllShips();
 
-// Add arrays of valid characters to be iterated through during input check:
-let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-
 // Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss:
 let userInputs = [];
 
@@ -564,5 +562,16 @@ const getStrike = () => {
     if (!letters.includes(strike[0]) || !numbers.includes(strike[1])) {
         console.log('Please enter a letter A-C & a number 1-3.')
         getStrike();
+    }
+}
+
+// Function to ask user if they want to play again after sinking all ships:
+const playAgainOrNot = () => {
+    if (rs.keyInYN('You have destroyed all the battleships! Would you like to play again? ')) {
+        shipLocations = [];
+        shipLocationsAll = [];
+        sunkenShips = 0;
+        userInputs = [];
+        playGame();
     }
 }
