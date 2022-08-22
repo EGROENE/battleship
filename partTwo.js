@@ -548,3 +548,7 @@ const placeAllShips = () => {
     placeFiveUnitShip();
 }
 placeAllShips();
+
+// Add arrays of valid characters to be iterated through during input check:
+let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
