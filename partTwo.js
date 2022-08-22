@@ -29,25 +29,16 @@ const placeTwoUnitShip = () => {
     }
     // Function to create additional units and place next to each other horizontally (if the units share the same letter coordinate):
     let createMoreUnitsIfLetterCoordIsShared = () => {
-        if (unitOne[0] === 'A') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'B') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'C') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'D') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'E') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'F') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'G') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'H') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'I') {
-            unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-        } else if (unitOne[0] === 'J') {
+        if (unitOne[0] === 'A'
+        || unitOne[0] === 'B'
+        || unitOne[0] === 'C'
+        || unitOne[0] === 'D'
+        || unitOne[0] === 'E'
+        || unitOne[0] === 'F'
+        || unitOne[0] === 'G'
+        || unitOne[0] === 'H'
+        || unitOne[0] === 'I'
+        || unitOne[0] === 'J') {
             unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
         }
         if ((unitOne[1] + unitOne[2]) == '10') {
@@ -60,26 +51,18 @@ const placeTwoUnitShip = () => {
     // Function to create additional units and place next to each other vertically (if the units share the same number coordinate):
     let createMoreUnitsIfNumberCoordIsShared = () => {
         let indexOfLetter = letterCoordinates.indexOf(unitOne[0]);
-        if (unitOne[1] === '1' && unitOne.length === 2) {
+        if (unitOne[1] === '1' && unitOne.length === 2
+        || unitOne[1] === '2'
+        || unitOne[1] === '3'
+        || unitOne[1] === '4'
+        || unitOne[1] === '5'
+        || unitOne[1] === '6'
+        || unitOne[1] === '7'
+        || unitOne[1] === '8'
+        || unitOne[1] === '9') {
             unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-        } else if (unitOne[1] === '2') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
-        } else if (unitOne[1] === '3') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
-        } else if (unitOne[1] === '4') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
-        } else if (unitOne[1] === '5') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
-        } else if (unitOne[1] === '6') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
-        } else if (unitOne[1] === '7') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
-        } else if (unitOne[1] === '8') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
-        } else if (unitOne[1] === '9') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];        
         } else if ((unitOne[1] + unitOne[2]) == '10') {
-            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + (unitOne[1] + unitOne[2]);   
+            unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + (unitOne[1] + unitOne[2]);
         }
         if (unitOne[0] === 'J' && unitOne.length === 3) {
             unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + (unitOne[1] + unitOne[2]);        
@@ -117,7 +100,6 @@ const getPreviousShipLocations = (shipUnits) => {
     }
 }
 
-
 // Function to place 1 three-unit ship (call this function twice in placeAllShips(), as there are 2 of this type in game):
 const placeThreeUnitShip = () => {
     let threeUnitShip = [];
@@ -134,36 +116,18 @@ const placeThreeUnitShip = () => {
         }
         // Function to create additional units and place next to each other horizontally (if the units share the same letter coordinate):
         let createMoreUnitsIfLetterCoordIsShared = () => {
-            if (unitOne[0] === 'A') {
+            if (unitOne[0] === 'A'
+            || unitOne[0] === 'B'
+            || unitOne[0] === 'C'
+            || unitOne[0] === 'D'
+            || unitOne[0] === 'E'
+            || unitOne[0] === 'F'
+            || unitOne[0] === 'G'
+            || unitOne[0] === 'H'
+            || unitOne[0] === 'I'
+            || unitOne[0] === 'J') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));
-            } else if (unitOne[0] === 'B') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));
-            } else if (unitOne[0] === 'C') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
-            } else if (unitOne[0] === 'D') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
-            } else if (unitOne[0] === 'E') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
-            } else if (unitOne[0] === 'F') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
-            } else if (unitOne[0] === 'G') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
-            } else if (unitOne[0] === 'H') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
-            } else if (unitOne[0] === 'I') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
-            } else if (unitOne[0] === 'J') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
-                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));        
+                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));  
             }
             if ((unitOne[1] + unitOne[2]) == '10') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
@@ -180,36 +144,18 @@ const placeThreeUnitShip = () => {
         // Function to create additional units and place next to each other vertically (if the units share the same number coordinate):
         let createMoreUnitsIfNumberCoordIsShared = () => {
             let indexOfLetter = letterCoordinates.indexOf(unitOne[0]);
-            if (unitOne[1] === '1' && unitOne.length === 2) {
+            if (unitOne[1] === '1' && unitOne.length === 2
+            || unitOne[1] === '2'
+            || unitOne[1] === '3'
+            || unitOne[1] === '4'
+            || unitOne[1] === '5'
+            || unitOne[1] === '6'
+            || unitOne[1] === '7'
+            || unitOne[1] === '8'
+            || unitOne[1] === '9'
+            || (unitOne[1] + unitOne[2]) == '10') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];
-            } else if (unitOne[1] === '2') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];      
-            } else if (unitOne[1] === '3') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];    
-            } else if (unitOne[1] === '4') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];      
-            } else if (unitOne[1] === '5') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];     
-            } else if (unitOne[1] === '6') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];       
-            } else if (unitOne[1] === '7') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];       
-            } else if (unitOne[1] === '8') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];      
-            } else if (unitOne[1] === '9') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];       
-            } else if ((unitOne[1] + unitOne[2]) == '10') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1];  
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
             }
             if (unitOne[0] === 'I') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
@@ -285,8 +231,6 @@ const placeThreeUnitShip = () => {
         console.log('Final shipLocationsAll after duplicate case:'); // FOR TESTING
         console.log(shipLocationsAll); // FOR TESTING
     }
-
-    //return threeUnitShip;
 }
 
 // Function to place 1 four-unit ship (call once inside placeAllShips()):
