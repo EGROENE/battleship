@@ -555,3 +555,14 @@ let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
 // Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss:
 let userInputs = [];
+
+// Function to ask user for strike location:
+let strike = '';
+const getStrike = () => {
+    strike = rs.question('Enter a location to strike (e.g. A3): ').toUpperCase();
+    userInputs.push(strike);
+    if (!letters.includes(strike[0]) || !numbers.includes(strike[1])) {
+        console.log('Please enter a letter A-C & a number 1-3.')
+        getStrike();
+    }
+}
