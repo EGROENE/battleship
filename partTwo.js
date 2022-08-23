@@ -629,3 +629,14 @@ const hitOrMiss = () => {
         }
     }
 }
+
+// Have user press any key to begin game:
+const playGame = () => {
+    if (rs.keyIn('Press just about any key to start the game: ')) {
+        console.log('Let\'s play!');
+        placeAllShips();
+        getStrike();
+        hitOrMiss();
+    }
+}
+playGame();
