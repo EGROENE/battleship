@@ -543,13 +543,12 @@ const placeFiveUnitShip = () => {
 
 // Function to place all ships:
 const placeAllShips = () => {
-    //placeTwoUnitShip();
+    placeTwoUnitShip();
     placeThreeUnitShip();
     placeThreeUnitShip();
     placeFourUnitShip();
     placeFiveUnitShip();
 }
-placeAllShips();
 
 // Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss:
 let userInputs = [];
@@ -559,7 +558,7 @@ let strike = '';
 const getStrike = () => {
     strike = rs.question('Enter a location to strike (e.g. A3): ').toUpperCase();
     userInputs.push(strike);
-    if (!letters.includes(strike[0]) || !numbers.includes(strike[1])) {
+    if (!letterCoordinates.includes(strike[0]) || !numberCoordinates.includes(strike[1])) {
         console.log('Please enter a letter A-C & a number 1-3.')
         getStrike();
     }
@@ -579,13 +578,15 @@ const playAgainOrNot = () => {
 // Initialize var to tally  sunken ships:
 let sunkenShips = 0;
 
+// Initialize remaining-ships variable:
+let remShips = '';
+
 // Function to tell user if they hit or miss:
 const hitOrMiss = () => {
-    let remShips = shipLocations.length;
     let countStrikeOccurrences = 0;
     for (userInput of userInputs) {
         if(userInput === strike) {
-            countStrikeOccurences++;
+            countStrikeOccurrences++;
         }
     }
     if (countStrikeOccurrences > 1) {
@@ -599,32 +600,48 @@ const hitOrMiss = () => {
     }
     if (shipLocationsAll.includes(strike)) {
         console.log(`Hit!`);
+        
         // Remove strike location from shipLocationsAll:
         let indexOfHitInSLA = shipLocationsAll.indexOf(strike);
         shipLocationsAll.splice(indexOfHitInSLA, 1);
         console.log('shipLocationsAll after struck coord removed:'); // FOR TESTING
         console.log(shipLocationsAll); // FOR TESTING
+        console.log('user inputs:'); // FOR TESTING
+        console.log(userInputs); // FOR TESTING
+        console.log('shipLocations before removal:'); // FOR TESTING
+        console.log(shipLocations); // FOR TESTING
+        // READY TO GO
 
-        // Remove strike location from shipLocations:
+        // Remove strike location from shipLocations. Remove strike from the ship which contains it:
         // Will need to iterate thru subarrays:
         for (shipLocation of shipLocations) {
-            let indexOfHitInSL = shipLocation.indexOf(strike);
-            shipLocation.splice(indexOfHitInSL, 1);
-            console.log('shipLocations after struck coord removed:'); // FOR TESTING
-            console.log(shipLocations); // FOR TESTING
-
-            // If all coords in a ship have been hit:
-            if (shipLocation.length === 0) {
-                sunkenShips++;
-                console.log(`You have sunken this ship. ${remShips} ship(s) left.`);
-                console.log('Total sunken ships: '); // FOR TESTING
-                console.log(sunkenShips); // FOR TESTING
-            }
-            if (sunkenShips >= 1) {
-                getStrike();
-                hitOrMiss();
-            } else {
-                playAgainOrNot();
+            let indexOfStrikeInSL = shipLocation.indexOf(strike);
+            if (shipLocation.includes(strike)) {
+                shipLocation.splice(indexOfStrikeInSL, 1);
+                console.log('shipLocations after struck coord is removed:'); // FOR TESTING
+                console.log(shipLocations); // FOR TESTING
+                if (shipLocation.length === 0) {
+                    console.log('remShips before:')
+                    console.log(remShips);
+                    remShips--;
+                    console.log('remShips after:')
+                    console.log(remShips);
+                    console.log('sunkenShips before:')
+                    console.log(sunkenShips);
+                    sunkenShips++;
+                    console.log('sunkenShips after:')
+                    console.log(sunkenShips);
+                    console.log(`You have sunken this ship. ${remShips} ship(s) remaining.`);
+                    if (remShips >= 1) {
+                        getStrike();
+                        hitOrMiss();
+                    } else {
+                        playAgainOrNot();
+                    }
+                } else {
+                    getStrike();
+                    hitOrMiss();
+                }
             }
         }
     }
@@ -633,8 +650,13 @@ const hitOrMiss = () => {
 // Have user press any key to begin game:
 const playGame = () => {
     if (rs.keyIn('Press just about any key to start the game: ')) {
-        console.log('Let\'s play!');
+        console.log('Let\'s play!'); // Greet the user
         placeAllShips();
+        console.log('number of ships placed:'); // FOR TESTING
+        console.log(shipLocations.length); // FOR TESTING
+        remShips = shipLocations.length - sunkenShips;
+        console.log('remShips beginning:'); // FOR TESTING
+        console.log(remShips); // FOR TESTING
         getStrike();
         hitOrMiss();
     }
