@@ -578,3 +578,54 @@ const playAgainOrNot = () => {
 
 // Initialize var to tally  sunken ships:
 let sunkenShips = 0;
+
+// Function to tell user if they hit or miss:
+const hitOrMiss = () => {
+    let remShips = shipLocations.length;
+    let countStrikeOccurrences = 0;
+    for (userInput of userInputs) {
+        if(userInput === strike) {
+            countStrikeOccurences++;
+        }
+    }
+    if (countStrikeOccurrences > 1) {
+        console.log('You\'ve already picked this location. Miss!');
+        getStrike();
+        hitOrMiss();
+    } else if (!shipLocationsAll.includes(strike)) {
+        console.log('You have missed.');
+        getStrike();
+        hitOrMiss();
+    }
+    if (shipLocationsAll.includes(strike)) {
+        console.log(`Hit!`);
+        // Remove strike location from shipLocationsAll:
+        let indexOfHitInSLA = shipLocationsAll.indexOf(strike);
+        shipLocationsAll.splice(indexOfHitInSLA, 1);
+        console.log('shipLocationsAll after struck coord removed:'); // FOR TESTING
+        console.log(shipLocationsAll); // FOR TESTING
+
+        // Remove strike location from shipLocations:
+        // Will need to iterate thru subarrays:
+        for (shipLocation of shipLocations) {
+            let indexOfHitInSL = shipLocation.indexOf(strike);
+            shipLocation.splice(indexOfHitInSL, 1);
+            console.log('shipLocations after struck coord removed:'); // FOR TESTING
+            console.log(shipLocations); // FOR TESTING
+
+            // If all coords in a ship have been hit:
+            if (shipLocation.length === 0) {
+                sunkenShips++;
+                console.log(`You have sunken this ship. ${remShips} ship(s) left.`);
+                console.log('Total sunken ships: '); // FOR TESTING
+                console.log(sunkenShips); // FOR TESTING
+            }
+            if (sunkenShips >= 1) {
+                getStrike();
+                hitOrMiss();
+            } else {
+                playAgainOrNot();
+            }
+        }
+    }
+}
