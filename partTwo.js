@@ -483,11 +483,11 @@ const placeFiveUnitShip = () => {
                 unitFour = letterCoordinates.charAt(indexOfLetter + 4) + unitOne[1]; 
                 unitFive = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
             }
-            if (unitOne[0] === 'H') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
-                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
-                unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
-                unitFive = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1]; 
+            if (unitOne[0] === 'H' || (unitOne[0] === 'H' && unitOne[2])) {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1] + unitOne[2];
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1] + unitOne[2]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1] + unitOne[2]; 
+                unitFive = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1] + unitOne[2]; 
             }
             if (unitOne[0] === 'I') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
