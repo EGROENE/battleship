@@ -266,6 +266,16 @@ const placeFourUnitShip = () => {
                 unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));  
                 unitFour = (unitOne[0] + (Number(unitOne[1]) + 3));  
             }
+            if (unitOne[1] == '8') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
+                unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
+                unitFour = (unitOne[0] + (Number(unitOne[1] - 1)));
+            }
+            if (unitOne[1] == '9') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
+                unitThree = (unitOne[0] + (Number(unitOne[1] - 1)));
+                unitFour = (unitOne[0] + (Number(unitOne[1] - 2)));
+            }
             if ((unitOne[1] + unitOne[2]) == '10') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
                 unitThree = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 2));
