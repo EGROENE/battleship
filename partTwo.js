@@ -25,7 +25,7 @@ const placeTwoUnitShip = () => {
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
-        unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
+        unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 5)]];
         console.log(unitOne);
         twoUnitShip.push(unitOne);
         shipLocationsAll.push(unitOne);
@@ -112,7 +112,7 @@ const placeThreeUnitShip = () => {
     const placeUnits = () => {
          // Create unit one:
         for (let i = 0; i < 1; i++) {
-            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
+            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 5)]];
             threeUnitShip.push(unitOne);
             shipLocationsAll.push(unitOne);
         }
@@ -246,7 +246,7 @@ const placeFourUnitShip = () => {
     const placeUnits = () => {
          // Create unit one:
         for (let i = 0; i < 1; i++) {
-            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
+            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 5)]];
             fourUnitShip.push(unitOne);
             shipLocationsAll.push(unitOne);
         }
@@ -393,7 +393,7 @@ const placeFiveUnitShip = () => {
     const placeUnits = () => {
          // Create unit one:
         for (let i = 0; i < 1; i++) {
-            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
+            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 5)]];
             fiveUnitShip.push(unitOne);
             shipLocationsAll.push(unitOne);
         }
