@@ -271,14 +271,14 @@ const placeFourUnitShip = () => {
                 unitFour = (unitOne[0] + (Number(unitOne[1]) + 3));  
             }
             if (unitOne[1] == '8') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
-                unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
-                unitFour = (unitOne[0] + (Number(unitOne[1] - 1)));
+                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));
+                unitFour = (unitOne[0] + (Number(unitOne[1]) - 1));
             }
             if (unitOne[1] == '9') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
-                unitThree = (unitOne[0] + (Number(unitOne[1] - 1)));
-                unitFour = (unitOne[0] + (Number(unitOne[1] - 2)));
+                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1]) - 1));
+                unitFour = (unitOne[0] + (Number(unitOne[1]) - 2));
             }
             if ((unitOne[1] + unitOne[2]) == '10') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
@@ -303,23 +303,35 @@ const placeFourUnitShip = () => {
             || unitOne[1] === '6'
             || unitOne[1] === '7'
             || unitOne[1] === '8'
-            || unitOne[1] === '9'
-            || (unitOne[1] + unitOne[2]) == '10') {
+            || unitOne[1] === '9') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
                 unitFour = letterCoordinates.charAt(indexOfLetter + 3) + unitOne[1]; 
             }
-            if (unitOne[0] === 'H') {
+            if ((unitOne[1] + unitOne[2]) == '10') {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1] + unitOne[2];
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1] + unitOne[2]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter + 3) + unitOne[1] + unitOne[2]; 
+            }
+            if (unitOne[0] === 'H' && unitOne[2]) {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1] + unitOne[2];
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1] + unitOne[2]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1] + unitOne[2]; 
+            } else if (unitOne[0] === 'H') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
                 unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
             }
-            if (unitOne[0] === 'I') {
+            if (unitOne[0] === 'I' && unitOne[2]) {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1] + unitOne[2];
+                unitThree = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1] + unitOne[2]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1] + unitOne[2];
+            } else if (unitOne[0] === 'I') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
-                unitFour = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1];
             }
-            if (unitOne[0] === 'J' && unitOne.length === 3) {
+            if (unitOne[0] === 'J' && unitOne[2]) {
                 unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + (unitOne[1] + unitOne[2]);        
                 unitThree = letterCoordinates.charAt(indexOfLetter - 2) + (unitOne[1] + unitOne[2]);        
                 unitFour = letterCoordinates.charAt(indexOfLetter - 3) + (unitOne[1] + unitOne[2]);        
@@ -599,8 +611,8 @@ const placeAllShips = () => {
     //placeTwoUnitShip();
     //placeThreeUnitShip();
     //placeThreeUnitShip();
-    //placeFourUnitShip();
-    placeFiveUnitShip();
+    placeFourUnitShip();
+    //placeFiveUnitShip();
 }
 
 /* Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss: */
