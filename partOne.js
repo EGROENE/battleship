@@ -70,7 +70,7 @@ const hitOrMiss = () => {
     let countStrikeOccurrences = 0;
     for (userInput of userInputs) {
         if(userInput === strike) {
-            countStrikeOccurences++;
+            countStrikeOccurrences++;
         }
     }
     if (countStrikeOccurrences > 1) {
