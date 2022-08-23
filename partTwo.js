@@ -26,7 +26,6 @@ const placeTwoUnitShip = () => {
     // Create unit one:
     for (let i = 0; i < 1; i++) {
         unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
-        console.log(unitOne);
         twoUnitShip.push(unitOne);
         shipLocationsAll.push(unitOne);
     }
@@ -72,7 +71,6 @@ const placeTwoUnitShip = () => {
         } else if (unitOne[0] === 'J') {
             unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];  
         }
-        console.log(unitTwo); // Keep now for testing purposes
         twoUnitShip.push(unitTwo);
         shipLocationsAll.push(unitTwo);
     }
@@ -89,8 +87,12 @@ const placeTwoUnitShip = () => {
     randPlaceVertOrHoriz();
 
     shipLocations.push(twoUnitShip);
-    console.log(twoUnitShip); // Keep now for testing purposes
+    console.log('two-unit ship:'); // FOR TESTING
+    console.log(twoUnitShip); // FOR TESTING
+    console.log('shipLocations:'); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
+    console.log('shipLocationsAll:');
+    console.log(shipLocationsAll);
 }
 
 // Cut off most-recent units added to shipLocationsAll so you can check if most-recent units already exist from previous ships:
@@ -139,10 +141,7 @@ const placeThreeUnitShip = () => {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
                 unitThree = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 2));
             }
-            threeUnitShip.push(unitTwo);
-            threeUnitShip.push(unitThree);
-            console.log('threeUnitShip'); // Keep now for testing purposes
-            console.log(threeUnitShip); // Keep now for testing purposes
+            threeUnitShip.push(unitTwo, unitThree);
             shipLocations.push(threeUnitShip);
             shipLocationsAll.push(unitTwo, unitThree);
         }
@@ -180,10 +179,7 @@ const placeThreeUnitShip = () => {
                 unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];  
                 unitThree = letterCoordinates.charAt(indexOfLetter - 2) + unitOne[1];  
             }
-            threeUnitShip.push(unitTwo);
-            threeUnitShip.push(unitThree);
-            console.log('threeUnitShip'); // Keep now for testing purposes
-            console.log(threeUnitShip); // Keep now for testing purposes
+            threeUnitShip.push(unitTwo, unitThree);
             shipLocations.push(threeUnitShip);
             shipLocationsAll.push(unitTwo, unitThree);
         }
@@ -201,26 +197,22 @@ const placeThreeUnitShip = () => {
     }
     placeUnits();
 
+    // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
+    console.log('three-unit ship:'); // FOR TESTING
+    console.log(threeUnitShip); // FOR TESTING
     console.log('shipLocations'); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
-
-    // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
     console.log('shipLocationsAll'); // FOR TESTING
     console.log(shipLocationsAll); // FOR TESTING
-    console.log(unitOne); // FOR TESTING
-    console.log(unitTwo); // FOR TESTING
-    console.log(unitThree); // FOR TESTING
 
-    // Get previousShipLocations array:
+    // Get previousShipLocations array, which is iterated thru to make sure new ship isn't placed in already-occupied places:
     getPreviousShipLocations(3); // Param is equal to how many units the ship has
-    console.log('prevShipLocations:'); // FOR TESTING
-    console.log(prevShipLocations); // FOR TESTING
 
     // After the current ship's units are cut off, iterate thru previous ships' units to make sure the current ship's units don't match:
     while (prevShipLocations.includes(unitOne) || prevShipLocations.includes(unitTwo) || prevShipLocations.includes(unitThree)) {
         console.log('DUPLICATE CASE'); // FOR TESTING 
         
-        // Cut most-recent ship off from shipLocations:
+        // Cut most-recent ship (which contains duplicate(s)) off from shipLocations:
         shipLocations.pop();
         console.log('shipLocations popped:'); // FOR TESTING
         console.log(shipLocations); // FOR TESTING
@@ -238,9 +230,11 @@ const placeThreeUnitShip = () => {
         
         // Re-place current ship:
         placeUnits();
-        console.log('Final shipLocations after duplicate case:'); // FOR TESTING
+        console.log('three-unit ship:'); // FOR TESTING
+        console.log(threeUnitShip); // FOR TESTING
+        console.log('shipLocations after solving duplicate case:'); // FOR TESTING
         console.log(shipLocations); // FOR TESTING
-        console.log('Final shipLocationsAll after duplicate case:'); // FOR TESTING
+        console.log('shipLocationsAll after solving duplicate case:'); // FOR TESTING
         console.log(shipLocationsAll); // FOR TESTING
     }
 }
@@ -292,8 +286,6 @@ const placeFourUnitShip = () => {
                 unitFour = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 3));
             }
             fourUnitShip.push(unitTwo, unitThree, unitFour);
-            console.log('fourUnitShip'); // Keep now for testing purposes
-            console.log(fourUnitShip); // Keep now for testing purposes
             shipLocations.push(fourUnitShip);
             shipLocationsAll.push(unitTwo, unitThree, unitFour);
         }
@@ -347,8 +339,6 @@ const placeFourUnitShip = () => {
                 unitFour = letterCoordinates.charAt(indexOfLetter - 3) + unitOne[1];  
             }
             fourUnitShip.push(unitTwo, unitThree, unitFour);
-            console.log('fourUnitShip'); // Keep now for testing purposes
-            console.log(fourUnitShip); // Keep now for testing purposes
             shipLocations.push(fourUnitShip);
             shipLocationsAll.push(unitTwo, unitThree, unitFour);
         }
@@ -366,21 +356,15 @@ const placeFourUnitShip = () => {
     }
     placeUnits();
 
+    console.log('four-unit ship:'); // FOR TESTING
+    console.log(fourUnitShip); // FOR TESTING
     console.log('shipLocations'); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
-
-    // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
-    console.log('shipLocationsAll'); // FOR TESTING
-    console.log(shipLocationsAll); // FOR TESTING
-    console.log(unitOne); // FOR TESTING
-    console.log(unitTwo); // FOR TESTING
-    console.log(unitThree); // FOR TESTING
-    console.log(unitFour); // FOR TESTING
+    console.log('shipLocationsAll'); // Keep now for testing purposes
+    console.log(shipLocationsAll); // Keep now for testing purposes
 
     // Get previousShipLocations array:
     getPreviousShipLocations(4); // Param is equal to how many units the ship has
-    console.log('prevShipLocations:'); // FOR TESTING
-    console.log(prevShipLocations); // FOR TESTING
 
     // After the current ship's units are cut off, iterate thru previous ships' units to make sure the current ship's units don't match:
     while (prevShipLocations.includes(unitOne) || prevShipLocations.includes(unitTwo) || prevShipLocations.includes(unitThree) || prevShipLocations.includes(unitFour)) {
@@ -405,9 +389,11 @@ const placeFourUnitShip = () => {
         
         // Re-place current ship:
         placeUnits();
-        console.log('Final shipLocations after duplicate case:'); // FOR TESTING
+        console.log('four-unit ship:'); // FOR TESTING
+        console.log(fourUnitShip); // FOR TESTING
+        console.log('shipLocations after solving duplicate case:'); // FOR TESTING
         console.log(shipLocations); // FOR TESTING
-        console.log('Final shipLocationsAll after duplicate case:'); // FOR TESTING
+        console.log('shipLocationsAll after solving duplicate case:'); // FOR TESTING
         console.log(shipLocationsAll); // FOR TESTING
     }
 }
@@ -471,8 +457,6 @@ const placeFiveUnitShip = () => {
                 unitFive = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 4));
             }
             fiveUnitShip.push(unitTwo, unitThree, unitFour, unitFive);
-            console.log('fiveUnitShip'); // Keep now for testing purposes
-            console.log(fiveUnitShip); // Keep now for testing purposes
             shipLocations.push(fiveUnitShip);
             shipLocationsAll.push(unitTwo, unitThree, unitFour, unitFive);
         }
@@ -545,8 +529,6 @@ const placeFiveUnitShip = () => {
                 unitFive = letterCoordinates.charAt(indexOfLetter - 4) + unitOne[1];  
             }
             fiveUnitShip.push(unitTwo, unitThree, unitFour, unitFive);
-            console.log('fiveUnitShip'); // Keep now for testing purposes
-            console.log(fiveUnitShip); // Keep now for testing purposes
             shipLocations.push(fiveUnitShip);
             shipLocationsAll.push(unitTwo, unitThree, unitFour, unitFive);
         }
@@ -564,22 +546,16 @@ const placeFiveUnitShip = () => {
     }
     placeUnits();
 
+    // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
+    console.log('five-unit ship:'); // FOR TESTING
+    console.log(fiveUnitShip); // FOR TESTING
     console.log('shipLocations'); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
-
-    // LEAVE FOLLOWING CONSOLE.LOGS FOR TESTING PURPOSES
     console.log('shipLocationsAll'); // FOR TESTING
     console.log(shipLocationsAll); // FOR TESTING
-    console.log(unitOne); // FOR TESTING
-    console.log(unitTwo); // FOR TESTING
-    console.log(unitThree); // FOR TESTING
-    console.log(unitFour); // FOR TESTING
-    console.log(unitFive); // FOR TESTING
 
     // Get previousShipLocations array:
     getPreviousShipLocations(5); // Param is equal to how many units the ship has
-    console.log('prevShipLocations:'); // FOR TESTING
-    console.log(prevShipLocations); // FOR TESTING
 
     // After the current ship's units are cut off, iterate thru previous ships' units to make sure the current ship's units don't match:
     while (prevShipLocations.includes(unitOne) || prevShipLocations.includes(unitTwo) || prevShipLocations.includes(unitThree) || prevShipLocations.includes(unitFour) || prevShipLocations.includes(unitFive)) {
@@ -605,9 +581,11 @@ const placeFiveUnitShip = () => {
         
         // Re-place current ship:
         placeUnits();
-        console.log('Final shipLocations after duplicate case:'); // FOR TESTING
+        console.log('five-unit ship:'); // FOR TESTING
+        console.log(fiveUnitShip); // FOR TESTING
+        console.log('shipLocations after solving duplicate case:'); // FOR TESTING
         console.log(shipLocations); // FOR TESTING
-        console.log('Final shipLocationsAll after duplicate case:'); // FOR TESTING
+        console.log('shipLocationsAll after solving duplicate case:'); // FOR TESTING
         console.log(shipLocationsAll); // FOR TESTING
     }
 }
