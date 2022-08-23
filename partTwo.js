@@ -559,7 +559,7 @@ const getStrike = () => {
     strike = rs.question('Enter a location to strike (e.g. A3): ').toUpperCase();
     userInputs.push(strike);
     if (!letterCoordinates.includes(strike[0]) || !numberCoordinates.includes(strike[1])) {
-        console.log('Please enter a letter A-C & a number 1-3.')
+        console.log('Please enter a letter A-J & a number 1-10.')
         getStrike();
     }
 }
