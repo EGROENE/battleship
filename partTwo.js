@@ -131,6 +131,10 @@ const placeThreeUnitShip = () => {
                 unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
                 unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));  
             }
+            if ((unitOne[1] + unitOne[2]) == '9') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) + 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
+            }
             if ((unitOne[1] + unitOne[2]) == '10') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
                 unitThree = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 2));
