@@ -428,11 +428,29 @@ const placeFiveUnitShip = () => {
                 unitFour = (unitOne[0] + (Number(unitOne[1]) + 3));  
                 unitFive = (unitOne[0] + (Number(unitOne[1]) + 4));  
             }
+            if ((unitOne[1] + unitOne[2]) == '7') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
+                unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
+                unitFour = (unitOne[0] + (Number(unitOne[1] + 3)));
+                unitFive = (unitOne[0] + (Number(unitOne[1] - 1)));
+            }
+            if ((unitOne[1] + unitOne[2]) == '8') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
+                unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
+                unitFour = (unitOne[0] + (Number(unitOne[1] - 1)));
+                unitFive = (unitOne[0] + (Number(unitOne[1] - 2)));
+            }
+            if ((unitOne[1] + unitOne[2]) == '9') {
+                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
+                unitThree = (unitOne[0] + (Number(unitOne[1] - 1)));
+                unitFour = (unitOne[0] + (Number(unitOne[1] - 2)));
+                unitFive = (unitOne[0] + (Number(unitOne[1] - 3)));
+            }
             if ((unitOne[1] + unitOne[2]) == '10') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
                 unitThree = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 2));
                 unitFour = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 3));
-                unitFour = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 4));
+                unitFive = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 4));
             }
             fiveUnitShip.push(unitTwo, unitThree, unitFour, unitFive);
             console.log('fiveUnitShip'); // Keep now for testing purposes
@@ -462,7 +480,8 @@ const placeFiveUnitShip = () => {
             if (unitOne[0] === 'G') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
-                unitFour = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
+                unitFour = letterCoordinates.charAt(indexOfLetter + 4) + unitOne[1]; 
+                unitFive = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
             }
             if (unitOne[0] === 'H') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
