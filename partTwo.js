@@ -428,19 +428,19 @@ const placeFiveUnitShip = () => {
                 unitFour = (unitOne[0] + (Number(unitOne[1]) + 3));  
                 unitFive = (unitOne[0] + (Number(unitOne[1]) + 4));  
             }
-            if ((unitOne[1] + unitOne[2]) == '7') {
+            if (unitOne[1] == '7') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
                 unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
                 unitFour = (unitOne[0] + (Number(unitOne[1] + 3)));
                 unitFive = (unitOne[0] + (Number(unitOne[1] - 1)));
             }
-            if ((unitOne[1] + unitOne[2]) == '8') {
+            if (unitOne[1] == '8') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
                 unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
                 unitFour = (unitOne[0] + (Number(unitOne[1] - 1)));
                 unitFive = (unitOne[0] + (Number(unitOne[1] - 2)));
             }
-            if ((unitOne[1] + unitOne[2]) == '9') {
+            if (unitOne[1] == '9') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
                 unitThree = (unitOne[0] + (Number(unitOne[1] - 1)));
                 unitFour = (unitOne[0] + (Number(unitOne[1] - 2)));
