@@ -615,10 +615,10 @@ const placeFiveUnitShip = () => {
 // Function to place all ships:
 const placeAllShips = () => {
     placeTwoUnitShip();
-    //placeThreeUnitShip();
-    //placeThreeUnitShip();
-    //placeFourUnitShip();
-    //placeFiveUnitShip();
+    placeThreeUnitShip();
+    placeThreeUnitShip();
+    placeFourUnitShip();
+    placeFiveUnitShip();
 }
 
 /* Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss: */
