@@ -67,7 +67,7 @@ const placeTwoUnitShip = () => {
         } else if ((unitOne[1] + unitOne[2]) == '10') {
             unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + (unitOne[1] + unitOne[2]);
         }
-        if (unitOne[0] === 'J' && unitOne.length === 3) {
+        if (unitOne[0] === 'J' && unitOne[2]) {
             unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + (unitOne[1] + unitOne[2]);        
         } else if (unitOne[0] === 'J') {
             unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1];  
@@ -614,9 +614,9 @@ const placeFiveUnitShip = () => {
 
 // Function to place all ships:
 const placeAllShips = () => {
-    //placeTwoUnitShip();
-    placeThreeUnitShip();
-    placeThreeUnitShip();
+    placeTwoUnitShip();
+    //placeThreeUnitShip();
+    //placeThreeUnitShip();
     //placeFourUnitShip();
     //placeFiveUnitShip();
 }
