@@ -1,8 +1,9 @@
 // Add 'readline-sync' NPM package:
 var rs = require('readline-sync');
 
-// Initialize array to track placement of the ships. Contains subarrays.
+// Initialize array to track placement of the ships. Contains subarrays corresponding to individual ships.
 let shipLocations = [];
+
 // Initialize array to track placement of the ships. Does not contain subarrays. 
 let shipLocationsAll = [];
 
@@ -24,7 +25,7 @@ const placeTwoUnitShip = () => {
 
     // Create unit one:
     for (let i = 0; i < 1; i++) {
-        unitOne += [letterCoordinates[Math.floor(Math.random() * 2)] + numberCoordinates[Math.floor(Math.random() * 5)]];
+        unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
         console.log(unitOne);
         twoUnitShip.push(unitOne);
         shipLocationsAll.push(unitOne);
@@ -90,7 +91,6 @@ const placeTwoUnitShip = () => {
     shipLocations.push(twoUnitShip);
     console.log(twoUnitShip); // Keep now for testing purposes
     console.log(shipLocations); // Keep now for testing purposes
-    //return twoUnitShip;
 }
 
 // Cut off most-recent units added to shipLocationsAll so you can check if most-recent units already exist from previous ships:
@@ -112,7 +112,7 @@ const placeThreeUnitShip = () => {
     const placeUnits = () => {
          // Create unit one:
         for (let i = 0; i < 1; i++) {
-            unitOne += [letterCoordinates[Math.floor(Math.random() * 2)] + numberCoordinates[Math.floor(Math.random() * 5)]];
+            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
             threeUnitShip.push(unitOne);
             shipLocationsAll.push(unitOne);
         }
@@ -246,7 +246,7 @@ const placeFourUnitShip = () => {
     const placeUnits = () => {
          // Create unit one:
         for (let i = 0; i < 1; i++) {
-            unitOne += [letterCoordinates[Math.floor(Math.random() * 4)] + numberCoordinates[Math.floor(Math.random() * 5)]];
+            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
             fourUnitShip.push(unitOne);
             shipLocationsAll.push(unitOne);
         }
@@ -393,7 +393,7 @@ const placeFiveUnitShip = () => {
     const placeUnits = () => {
          // Create unit one:
         for (let i = 0; i < 1; i++) {
-            unitOne += [letterCoordinates[Math.floor(Math.random() * 4)] + numberCoordinates[Math.floor(Math.random() * 5)]];
+            unitOne += [letterCoordinates[Math.floor(Math.random() * 10)] + numberCoordinates[Math.floor(Math.random() * 10)]];
             fiveUnitShip.push(unitOne);
             shipLocationsAll.push(unitOne);
         }
@@ -550,7 +550,7 @@ const placeAllShips = () => {
     placeFiveUnitShip();
 }
 
-// Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss:
+/* Initialize array to track user guesses. If a guess is entered more than once, it's a miss. In other words, if input already exists in userInputs, it's a miss: */
 let userInputs = [];
 
 // Function to ask user for strike location:
