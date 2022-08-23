@@ -429,22 +429,22 @@ const placeFiveUnitShip = () => {
                 unitFive = (unitOne[0] + (Number(unitOne[1]) + 4));  
             }
             if (unitOne[1] == '7') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
-                unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
-                unitFour = (unitOne[0] + (Number(unitOne[1] + 3)));
-                unitFive = (unitOne[0] + (Number(unitOne[1] - 1)));
+                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));
+                unitFour = (unitOne[0] + (Number(unitOne[1]) + 3));
+                unitFive = (unitOne[0] + (Number(unitOne[1]) - 1));
             }
             if (unitOne[1] == '8') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
-                unitThree = (unitOne[0] + (Number(unitOne[1] + 2)));
-                unitFour = (unitOne[0] + (Number(unitOne[1] - 1)));
-                unitFive = (unitOne[0] + (Number(unitOne[1] - 2)));
+                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1]) + 2));
+                unitFour = (unitOne[0] + (Number(unitOne[1]) - 1));
+                unitFive = (unitOne[0] + (Number(unitOne[1]) - 2));
             }
             if (unitOne[1] == '9') {
-                unitTwo = (unitOne[0] + (Number(unitOne[1] + 1)));
-                unitThree = (unitOne[0] + (Number(unitOne[1] - 1)));
-                unitFour = (unitOne[0] + (Number(unitOne[1] - 2)));
-                unitFive = (unitOne[0] + (Number(unitOne[1] - 3)));
+                unitTwo = (unitOne[0] + (Number(unitOne[1]) + 1));
+                unitThree = (unitOne[0] + (Number(unitOne[1]) - 1));
+                unitFour = (unitOne[0] + (Number(unitOne[1]) - 2));
+                unitFive = (unitOne[0] + (Number(unitOne[1]) - 3));
             }
             if ((unitOne[1] + unitOne[2]) == '10') {
                 unitTwo = (unitOne[0] + (Number(unitOne[1] + unitOne[2]) - 1));
@@ -576,10 +576,10 @@ const placeFiveUnitShip = () => {
 
 // Function to place all ships:
 const placeAllShips = () => {
-    placeTwoUnitShip();
-    placeThreeUnitShip();
-    placeThreeUnitShip();
-    placeFourUnitShip();
+    //placeTwoUnitShip();
+    //placeThreeUnitShip();
+    //placeThreeUnitShip();
+    //placeFourUnitShip();
     placeFiveUnitShip();
 }
 
