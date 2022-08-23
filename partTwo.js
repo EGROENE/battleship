@@ -158,16 +158,22 @@ const placeThreeUnitShip = () => {
             || unitOne[1] === '6'
             || unitOne[1] === '7'
             || unitOne[1] === '8'
-            || unitOne[1] === '9'
-            || (unitOne[1] + unitOne[2]) == '10') {
+            || unitOne[1] === '9') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
             }
-            if (unitOne[0] === 'I') {
+            if ((unitOne[1] + unitOne[2]) == '10') {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
+                unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1] + unitOne[2]; 
+            }
+            if (unitOne[0] === 'I' && unitOne[2]) {
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1] + unitOne[2];
+                unitThree = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1] + unitOne[2]; 
+            } else if (unitOne[0] === 'I') {
                 unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
                 unitThree = letterCoordinates.charAt(indexOfLetter - 1) + unitOne[1]; 
             }
-            if (unitOne[0] === 'J' && unitOne.length === 3) {
+            if (unitOne[0] === 'J' && unitOne[2]) {
                 unitTwo = letterCoordinates.charAt(indexOfLetter - 1) + (unitOne[1] + unitOne[2]);        
                 unitThree = letterCoordinates.charAt(indexOfLetter - 2) + (unitOne[1] + unitOne[2]);        
             } else if (unitOne[0] === 'J') {
@@ -609,9 +615,9 @@ const placeFiveUnitShip = () => {
 // Function to place all ships:
 const placeAllShips = () => {
     //placeTwoUnitShip();
-    //placeThreeUnitShip();
-    //placeThreeUnitShip();
-    placeFourUnitShip();
+    placeThreeUnitShip();
+    placeThreeUnitShip();
+    //placeFourUnitShip();
     //placeFiveUnitShip();
 }
 
