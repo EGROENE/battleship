@@ -162,7 +162,7 @@ const placeThreeUnitShip = () => {
                 unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1]; 
             }
             if ((unitOne[1] + unitOne[2]) == '10') {
-                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1];
+                unitTwo = letterCoordinates.charAt(indexOfLetter + 1) + unitOne[1] + unitOne[2];
                 unitThree = letterCoordinates.charAt(indexOfLetter + 2) + unitOne[1] + unitOne[2]; 
             }
             if (unitOne[0] === 'I' && unitOne[2]) {
